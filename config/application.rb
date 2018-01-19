@@ -29,5 +29,16 @@ module FennecCore
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Allow Cross Origins
+    # config.action_dispatch.default_headers.merge!({
+    #     'Access-Control-Allow-Origin' => '*',
+    #    'Access-Control-Request-Method' => '*'
+    #                                              })
+    config.action_dispatch.default_headers = {
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Request-Method' => %w{GET POST PUT OPTIONS}.join(",")
+    }
+
   end
 end
